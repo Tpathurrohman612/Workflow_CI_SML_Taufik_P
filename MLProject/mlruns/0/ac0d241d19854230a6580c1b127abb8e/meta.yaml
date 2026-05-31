@@ -1,0 +1,15 @@
+artifact_uri: file:///home/runner/work/Workflow_CI_SML_Taufik_P/Workflow_CI_SML_Taufik_P/MLProject/mlruns/0/ac0d241d19854230a6580c1b127abb8e/artifacts
+end_time: 1780233065586
+entry_point_name: ''
+experiment_id: '0'
+lifecycle_stage: active
+run_id: ac0d241d19854230a6580c1b127abb8e
+run_name: burly-sloth-796
+run_uuid: ac0d241d19854230a6580c1b127abb8e
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1780233058764
+status: 3
+tags: []
+user_id: runner
