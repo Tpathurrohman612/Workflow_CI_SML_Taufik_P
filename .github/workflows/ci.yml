@@ -55,7 +55,7 @@ jobs:
       - name: Build Docker Model
         run: |
           cd MLProject
-          mlflow models build-docker -m "runs:/${{ env.RUN_ID }}/model" -n la-liga-model:latest --env-manager=conda
+          mlflow models build-docker -m "runs:/${{ env.RUN_ID }}/model" -n la-liga-model:latest --env-manager=virtualenv
 
       - name: Log in to Docker Hub
         run: |
