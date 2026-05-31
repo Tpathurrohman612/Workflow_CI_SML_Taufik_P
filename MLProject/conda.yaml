@@ -1,6 +1,7 @@
 name: la-liga.env
 channels:
   - conda-forge
+  - nodefaults
 dependencies:
     - python=3.12.7
     - pip
