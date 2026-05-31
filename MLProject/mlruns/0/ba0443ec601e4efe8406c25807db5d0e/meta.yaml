@@ -1,0 +1,15 @@
+artifact_uri: file:///home/runner/work/Workflow_CI_SML_Taufik_P/Workflow_CI_SML_Taufik_P/MLProject/mlruns/0/ba0443ec601e4efe8406c25807db5d0e/artifacts
+end_time: 1780242507289
+entry_point_name: ''
+experiment_id: '0'
+lifecycle_stage: active
+run_id: ba0443ec601e4efe8406c25807db5d0e
+run_name: bright-ram-906
+run_uuid: ba0443ec601e4efe8406c25807db5d0e
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1780242503688
+status: 3
+tags: []
+user_id: runner
