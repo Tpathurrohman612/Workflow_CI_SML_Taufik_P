@@ -49,13 +49,16 @@ jobs:
           git config --global user.name "github-actions[bot]"
           git config --global user.email "github-actions[bot]@users.noreply.github.com"
           git add MLProject/mlruns/
-          git commit -m "Upload artefak model melalui GitHub Actions" || echo "Tidak ada perubahan"
+          git commit -m "Upload artefak model melalui GitHub Actions [skip ci]" || echo "Tidak ada perubahan"
           git push
 
       - name: Build Docker Model
         run: |
           cd MLProject
-          mlflow models build-docker -m "runs:/${{ env.RUN_ID }}/model" -n la-liga-model:latest --env-manager=virtualenv
+          echo "Menjalankan mlflow models build-docker secara manual"
+          mlflow models generate-dockerfile -m "runs:/${{ env.RUN_ID }}/model" -d docker_build_dir --env-manager=virtualenv
+          sed -i 's|https://bootstrap.pypa.io/get-pip.py|https://bootstrap.pypa.io/pip/3.9/get-pip.py|g' docker_build_dir/Dockerfile
+          docker build -t la-liga-model:latest docker_build_dir/
 
       - name: Log in to Docker Hub
         run: |
