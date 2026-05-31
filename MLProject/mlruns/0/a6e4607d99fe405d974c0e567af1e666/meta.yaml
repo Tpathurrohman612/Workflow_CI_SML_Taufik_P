@@ -1,0 +1,15 @@
+artifact_uri: file:///home/runner/work/Workflow_CI_SML_Taufik_P/Workflow_CI_SML_Taufik_P/MLProject/mlruns/0/a6e4607d99fe405d974c0e567af1e666/artifacts
+end_time: 1780237870387
+entry_point_name: ''
+experiment_id: '0'
+lifecycle_stage: active
+run_id: a6e4607d99fe405d974c0e567af1e666
+run_name: marvelous-mule-737
+run_uuid: a6e4607d99fe405d974c0e567af1e666
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1780237867407
+status: 3
+tags: []
+user_id: runner
