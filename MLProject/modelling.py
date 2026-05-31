@@ -3,33 +3,43 @@ import mlflow
 import mlflow.sklearn
 from sklearn.ensemble import RandomForestClassifier
 
-# Mengonfigurasi lokasi penyimpanan pelacakan (tracking URI) ke direktori lokal.
+# Menetapkan direktori lokal untuk penyimpanan log dan artefak eksperimen
 mlflow.set_tracking_uri("file:./mlruns")
 
-print("Memuat dataset hasil pra-pemrosesan...")
-# Membaca dataset dari direktori yang sama dengan tempat skrip ini dieksekusi
+print("[INFO] Memuat dataset...")
+# Membaca dataset yang telah dibersihkan
 df = pd.read_csv('la_liga_cleaned.csv')
 
-# Memisahkan dataset menjadi variabel independen (fitur/X) dan variabel dependen (target/y)
+# Memisahkan variabel independen (fitur) dan dependen (target)
 X = df.drop(columns=['FTR'])
 y = df['FTR']
 
-# Memulai sesi pelacakan eksperimen menggunakan MLflow
+# Memulai sesi pelacakan eksperimen MLflow
 with mlflow.start_run() as run:
-    print("Memulai proses pelatihan model...")
+    print("[INFO] Melatih model RandomForest...")
     
-    # Inisialisasi dan pelatihan algoritma Random Forest
+    # Menginisialisasi dan melatih model algoritma Random Forest
     model = RandomForestClassifier(n_estimators=50, random_state=42)
     model.fit(X, y)
     
-    # Menyimpan arsitektur model yang telah dilatih ke dalam direktori artefak MLflow
-    mlflow.sklearn.log_model(model, "model", conda_env="conda.yaml")
+    # Mendefinisikan lingkungan Conda secara dinamis 
+    # (Bypass kendala pembacaan YAML dan Terms of Service Anaconda)
+    custom_env = {
+        "name": "la-liga-env",
+        "channels": ["conda-forge", "nodefaults"],
+        "dependencies": [
+            "python=3.12.7",
+            "pip",
+            {"pip": ["mlflow==2.19.0", "scikit-learn==1.5.2", "pandas"]}
+        ]
+    }
     
-    # Mengekstrak ID Eksperimen (Run ID) unik dari sesi yang sedang berjalan
+    # Menyimpan arsitektur model beserta konfigurasi lingkungannya
+    mlflow.sklearn.log_model(model, "model", conda_env=custom_env)
+    
+    # Mengekstrak dan menyimpan Run ID ke dalam file teks untuk alur CI/CD
     run_id = run.info.run_id
-    
-    # Menyimpan Run ID ke dalam sebuah file teks sekunder bernama 'run_id.txt'.
     with open("run_id.txt", "w") as f:
         f.write(run_id)
         
-    print(f"Pelatihan selesai dengan sukses. Run ID terekam: {run_id}")
+    print(f"[INFO] Pelatihan selesai. Run ID: {run_id}")
