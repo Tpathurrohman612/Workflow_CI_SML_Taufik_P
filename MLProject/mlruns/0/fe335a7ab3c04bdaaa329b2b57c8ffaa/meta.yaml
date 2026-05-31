@@ -1,0 +1,15 @@
+artifact_uri: file:///home/runner/work/Workflow_CI_SML_Taufik_P/Workflow_CI_SML_Taufik_P/MLProject/mlruns/0/fe335a7ab3c04bdaaa329b2b57c8ffaa/artifacts
+end_time: 1780236340193
+entry_point_name: ''
+experiment_id: '0'
+lifecycle_stage: active
+run_id: fe335a7ab3c04bdaaa329b2b57c8ffaa
+run_name: whimsical-gnu-29
+run_uuid: fe335a7ab3c04bdaaa329b2b57c8ffaa
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1780236333289
+status: 3
+tags: []
+user_id: runner
