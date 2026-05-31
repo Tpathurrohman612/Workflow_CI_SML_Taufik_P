@@ -23,7 +23,7 @@ with mlflow.start_run() as run:
     model.fit(X, y)
     
     # Menyimpan arsitektur model yang telah dilatih ke dalam direktori artefak MLflow
-    mlflow.sklearn.log_model(model, "model")
+    mlflow.sklearn.log_model(model, "model", conda_env="conda.yaml")
     
     # Mengekstrak ID Eksperimen (Run ID) unik dari sesi yang sedang berjalan
     run_id = run.info.run_id
