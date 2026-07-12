@@ -1,0 +1,15 @@
+artifact_uri: file:///home/runner/work/Workflow_CI_SML_Taufik_P/Workflow_CI_SML_Taufik_P/MLProject/mlruns/0/cfd34c809f594374944e18ff5e89fe8a/artifacts
+end_time: 1783864040136
+entry_point_name: ''
+experiment_id: '0'
+lifecycle_stage: active
+run_id: cfd34c809f594374944e18ff5e89fe8a
+run_name: useful-shrew-178
+run_uuid: cfd34c809f594374944e18ff5e89fe8a
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1783864036156
+status: 3
+tags: []
+user_id: runner
