@@ -1,0 +1,15 @@
+artifact_uri: file:///home/runner/work/Workflow_CI_SML_Taufik_P/Workflow_CI_SML_Taufik_P/MLProject/mlruns/0/6ea713e17eb34232bad25e41d001715b/artifacts
+end_time: 1783862199956
+entry_point_name: ''
+experiment_id: '0'
+lifecycle_stage: active
+run_id: 6ea713e17eb34232bad25e41d001715b
+run_name: big-rat-822
+run_uuid: 6ea713e17eb34232bad25e41d001715b
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1783862196869
+status: 3
+tags: []
+user_id: runner
