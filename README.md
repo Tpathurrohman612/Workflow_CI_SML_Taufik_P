@@ -29,9 +29,11 @@ Pipeline dieksekusi secara otomatis setiap kali ada pembaruan (_push_) ke branch
    ┣ 📜 conda.yaml        # Definisi environment Conda
    ┣ 📜 modelling.py      # Skrip utama pelatihan algoritma Random Forest
    ┣ 📜 la_liga_cleaned.csv # Dataset bersih
-   ┣ 📂 mlruns            # Direktori pelacakan eksperimen & artefak model
+   ┣ 📂 mlruns            # Direktori pelacakan eksperimen & artefak model 
    ┗ 📜 tautan_docker_hub.txt # Informasi Docker Hub (opsional)
 ```
+*Catatan: Folder `mlruns` tidak disertakan dalam repositori untuk efisiensi; seluruh riwayat eksperimen telah dicatat dan dapat diakses secara daring melalui DagsHub.*
+
 
 ## 🔧 Teknologi & Dependensi
 
@@ -62,7 +64,7 @@ Pipeline di `.github/workflows/ci.yml`:
 - menjalankan `mlflow run . --env-manager=local` di folder `MLProject`
 - membaca `run_id` dari `run_id.txt`
 - meng-commit dan push artefak `MLProject/mlruns/` ke repository jika ada perubahan
-- membuat Dockerfile model dengan `mlflow models generate-dockerfile`
+- membangun Docker image la-liga-model:latest secara langsung menggunakan perintah `mlflow models build-docker`
 - membangun Docker image `la-liga-model:latest`
 - login ke Docker Hub dan push image
 
@@ -95,10 +97,9 @@ Pipeline di `.github/workflows/ci.yml`:
    ```bash
    mlflow run . --env-manager=local
    ```
-6. Setelah `run_id` tersedia, buat Docker image:
+6. Setelah `run_id` tersedia, bangun Docker image secara langsung menggunakan perintah bawaan MLflow:
    ```bash
-   mlflow models generate-dockerfile -m "runs:/$(cat run_id.txt)/model" -d docker_build_dir --env-manager=virtualenv
-   docker build -t la-liga-model:latest docker_build_dir/
+   mlflow models build-docker -m "runs:/$(cat run_id.txt)/model" -n la-liga-model:latest --env-manager=local
    ```
 7. Push Docker image ke Docker Hub:
    ```bash
